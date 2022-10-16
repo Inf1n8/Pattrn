@@ -7,6 +7,7 @@ from apis.login import Login
 from apis.patient import PatientDetail, Patients
 from apis.goals import GoalDetail
 from apis.observations import Observations, ObservationStats
+from apis.graphDataGen import GraphGen
 
 app = Flask(__name__)
 cors = CORS(app, resource={
@@ -25,6 +26,7 @@ api.add_resource(PatientDetail, '/patient_detail/<id>')
 api.add_resource(GoalDetail, '/goal_detail/<id>')
 api.add_resource(Observations, '/insert_observations/<id>')
 api.add_resource(ObservationStats, '/observation_stats/<id>')
+api.add_resource(GraphGen, '/get_graph_data/<id>')
 
 
 if __name__ == '__main__':

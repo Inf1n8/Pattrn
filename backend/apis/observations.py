@@ -7,6 +7,8 @@ from apis.database import get_fhir_id
 from apis.fhir_database import insert_observations, get_observations, get_observations_by_url
 from http import HTTPStatus
 from re import sub
+import pandas as pd
+import numpy as np
 
 baseDict = {'resource': {'resourceType': 'Observation',
                          'status': 'final',
@@ -67,7 +69,7 @@ class ObservationStats(Resource):
         df.drop(df[df['value_code'] == 'step'].index, inplace=True)
         for category, category_df in df.groupby('value_code'):
             resampled_df = category_df.resample(params["window"])
-            average = (resampled_df.sum().iloc[-1])/category_df.shape[0]
+            average = resampled_df.mean().iloc[-1]
             max_val = resampled_df.max().iloc[-1]
             min_val = resampled_df.min().iloc[-1]
             sum_val = resampled_df.sum().iloc[-1]
@@ -75,7 +77,11 @@ class ObservationStats(Resource):
                 stats_dict[category] = {"value_code": camel_case(category), "average": np.round(average["value"], 1),
                                         "min": min_val["value"],
                                         "max": max_val["value"], "sum": sum_val["value"]}
-        return
+            else:
+                stats_dict[category] = {"value_code": camel_case(category), "average": average["value"],
+                                        "min": min_val["value"],
+                                        "max": max_val["value"], "sum": sum_val["value"]}
+        return stats_dict
 
 
 class Observations(Resource):

@@ -89,7 +89,7 @@ export default function Trends() {
   };
   const updateData = (timeline) => {
     console.log(timeline);
-
+    setWindow(timeline);
     switch (timeline) {
       case "W":
         ApexCharts.exec(

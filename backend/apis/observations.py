@@ -62,6 +62,7 @@ def get_next_links(observations, data_list):
 class ObservationStats(Resource):
     def get(self, id):
         params = request.args.to_dict()
+
         if not params.get('window'):
             return {"message": "Missing `window` parameter"}, 400
         fhir_id = get_fhir_id(id)
@@ -81,6 +82,7 @@ class ObservationStats(Resource):
             max_val = resampled_df.max().iloc[-1]
             min_val = resampled_df.min().iloc[-1]
             sum_val = resampled_df.sum().iloc[-1]
+
             category = format_category(category)
             if category == "bloodOxygen" or category == "stress" or category == "sleep":
                 stats_dict[category] = {"value_code": category, "average": np.round(average["value"], 1),
@@ -90,6 +92,7 @@ class ObservationStats(Resource):
                 stats_dict[category] = {"value_code": category, "average": int(average["value"]),
                                         "min": min_val["value"],
                                         "max": max_val["value"], "sum": sum_val["value"]}
+
         return stats_dict
 
 

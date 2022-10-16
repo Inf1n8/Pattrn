@@ -72,7 +72,6 @@ class ObservationStats(Resource):
                                     "max": max_val["value"], "sum": sum_val["value"]}
         return stats_dict
 
-
 class Observations(Resource):
     def post(self,id):
         data = request.json 

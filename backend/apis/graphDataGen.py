@@ -8,6 +8,7 @@ from http import HTTPStatus
 from re import sub
 import pandas as pd
 import numpy as np
+from datetime import datetime as dt
 def camel_case(s):
   s = sub(r"(_|-)+", " ", s).title().replace(" ", "")
   return ''.join([s[0].lower(), s[1:]])
@@ -35,7 +36,7 @@ def get_next_links(observations, data_list):
             return get_next_links(observations, data_list)
 
 
-class ObservationStats(Resource):
+class GraphGen(Resource):
     def get(self, id):
         params = request.args.to_dict()
         fhir_id = get_fhir_id(id)
@@ -44,22 +45,13 @@ class ObservationStats(Resource):
         data_list.extend(get_data_to_list(observations))
         get_next_links(observations, data_list)
         df = pd.DataFrame(data_list)
-        df.index = pd.to_datetime(df['effective_date'])
-        stats_dict = {}
-        df.drop(df[df['value_code'] == 'step'].index, inplace=True)
-        for category, category_df in df.groupby('value_code'):
-            resampled_df = category_df.resample(params["window"])
-            average = (resampled_df.sum().iloc[-1])/resampled_df.shape[0]
-            max_val = resampled_df.max().iloc[-1]
-            min_val = resampled_df.min().iloc[-1]
-            sum_val = resampled_df.sum().iloc[-1]
-            if category=="SpO2" or category=="Stress" or category=="Sleep Duration":
-                stats_dict[category] = {"value_code": camel_case(category), "average": np.round(average["value"],1),
-                                    "min": min_val["value"],
-                                    "max": max_val["value"], "sum": sum_val["value"]}
-            else:
-                stats_dict[category] = {"value_code": camel_case(category), "average": average["value"],
-                                    "min": min_val["value"],
-                                    "max": max_val["value"], "sum": sum_val["value"]} 
-
-        return stats_dict
+        print(df.columns)
+        df.drop("issued_date",axis=1,inplace=True)
+        df.value_code=df.value_code.apply(lambda x:camel_case(x))
+        df.effective_date=df.effective_date.apply(lambda x:dt.strptime(x.replace("T"," ").split("+")[0],'%Y-%m-%d %H:%M:%S').timestamp()*1000)
+        resutlDict={}
+        for value in set(df.value_code):
+            df_temp=df[df.value_code==value]
+            resutlDict[value]=[[i,j] for i,j in zip(list(df_temp.effective_date),list(df_temp.value))]
+        return resutlDict       
+       

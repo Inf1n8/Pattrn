@@ -121,6 +121,17 @@ def insert_observations(patient_id,data,baseDict):
                 if it["response"]["status"]=="201":
                     cnt+=1
     return cnt
+def get_observations(patient_id):
+    session = get_FHIR_session()
+    observation_url = f"{BASE_URL}/Patient/{patient_id}/Observation"
+    response = session.get(observation_url)
+    return response.json()
+
+
+def get_observations_by_url(url):
+    session = get_FHIR_session()
+    response = session.get(url)
+    return response.json()
 
 
 def insert_patient_data(patient_dict):

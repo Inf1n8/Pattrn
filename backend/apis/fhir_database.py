@@ -93,6 +93,36 @@ def insert_goal_data(patient_id, data):
     return cnt
 
 
+def insert_observations(patient_id,data,baseDict):
+    dataDict=json.loads('{    "resourceType": "Bundle",    "id": "bundle-transaction", "type": "batch",    "entry": []}')
+    bundleEntry=[]
+    for it in data:
+        baseDict=copy.deepcopy(baseDict)
+        baseDict["resource"]["subject"]["reference"]+=str(patient_id)
+        baseDict["resource"]["effectiveDateTime"]=it["effectiveDateTime"]
+        baseDict["resource"]["issued"]=it["issued"]
+        baseDict["resource"]["valueQuantity"]["value"]=it["value"]
+        baseDict["resource"]["valueQuantity"]["unit"]=it["unit"]
+        baseDict["resource"]["valueQuantity"]["code"]=it["unit"]
+        bundleEntry.append(baseDict)
+    
+    cnt=0
+    session = get_FHIR_session()
+    def split_list (x):
+        return [bundleEntry[i:i+x] for i in range(0, len(bundleEntry), x)]
+
+    for window in split_list(100):
+        writeDict=copy.deepcopy(dataDict)
+        writeDict["entry"]=window
+        post_url = f"{BASE_URL}"
+        response = session.post(post_url, data=json.dumps(writeDict))
+        if response.json():
+            for it in response.json()["entry"]:
+                if it["response"]["status"]=="201":
+                    cnt+=1
+    return cnt
+
+
 def insert_patient_data(patient_dict):
     p = Patient()
     name = HumanName()

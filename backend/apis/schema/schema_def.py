@@ -10,14 +10,14 @@ class AddressSchema(Schema):
 
 
 class PatientSchema(Schema):
-    id = fields.Str(required=True)
+    id = fields.Str(required=False)
     email = fields.Str(required=True)
     password = fields.Str(required=True)
     firstName = fields.Str()
     lastName = fields.Str()
     gender = fields.Str()
     birthDate = fields.Str()
-    address = fields.Nested(AddressSchema)
+    #address = fields.Nested(AddressSchema)
 
 
 class LoginSchema(Schema):

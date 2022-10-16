@@ -5,6 +5,8 @@ from apis.task import Tasks
 from apis.hello import HelloWorld
 from apis.login import Login
 from apis.patient import PatientDetail, Patients
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
 cors = CORS(app, resource={
@@ -19,7 +21,7 @@ api.add_resource(HelloWorld, '/hello')
 api.add_resource(Tasks, '/task/<int:id>')
 api.add_resource(Login, '/login')
 api.add_resource(Patients, '/patients')
-api.add_resource(PatientDetail, '/patient_detail/<int:id>')
+api.add_resource(PatientDetail, '/patient_detail/<id>')
 
 
 if __name__ == '__main__':

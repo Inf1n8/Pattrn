@@ -1,13 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.4441065c.css",
-    "main.js": "/static/js/main.3dc02077.js",
+    "main.css": "/static/css/main.c8a07b0b.css",
+    "main.js": "/static/js/main.70941535.js",
+    "static/media/steps.png": "/static/media/steps.3d91fb515424613e1505.png",
+    "static/media/stress.png": "/static/media/stress.c979e93b0cc33345da2f.png",
+    "static/media/bloodOxygen.png": "/static/media/bloodOxygen.9ddf522eebd6d1ec3a84.png",
+    "static/media/heart_rate.png": "/static/media/heart_rate.bb50edff348104c7d86e.png",
+    "static/media/sleep.png": "/static/media/sleep.f178fb1ff59e9caa700e.png",
+    "static/media/background.png": "/static/media/background.f5a3647daa62030e5112.png",
+    "static/media/goals_logo.png": "/static/media/goals_logo.3b678c785a5cc6feb304.png",
+    "static/media/login_logo.png": "/static/media/login_logo.9b2ad35c287af6e76159.png",
     "index.html": "/index.html",
-    "main.4441065c.css.map": "/static/css/main.4441065c.css.map",
-    "main.3dc02077.js.map": "/static/js/main.3dc02077.js.map"
+    "main.c8a07b0b.css.map": "/static/css/main.c8a07b0b.css.map",
+    "main.70941535.js.map": "/static/js/main.70941535.js.map"
   },
   "entrypoints": [
-    "static/css/main.4441065c.css",
-    "static/js/main.3dc02077.js"
+    "static/css/main.c8a07b0b.css",
+    "static/js/main.70941535.js"
   ]
 }

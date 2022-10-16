@@ -1,7 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
-import App from "./App";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PageNotFound from "./PageNotFound";
+import ProtectedRoute from "./ProtectedRoute";
+import Login from "./Login";
+import Goals from "./Goals";
+import Progress from "./Progress";
+import Dashboard from "./Dashboard";
+import Trends from "./Trends";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <BrowserRouter>
+    <Routes>
+      <Route exact path="/" element={<ProtectedRoute />}>
+        <Route exact path="/" element={<Dashboard />} />
+        <Route exact path="/goals" element={<Goals />} />
+        <Route exact path="/progress" element={<Progress />} />
+        <Route exact path="/trends" element={<Trends />} />
+      </Route>
+      <Route exact path="/login" element={<Login />} />
+      <Route path="*" element={<PageNotFound />} />
+    </Routes>
+  </BrowserRouter>
+);

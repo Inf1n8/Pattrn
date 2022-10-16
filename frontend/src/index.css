@@ -1,15 +1,192 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600&family=EB+Garamond:wght@400;500;600&family=Work+Sans:wght@400;500&display=swap');
+* {
+    font-family: 'Arimo', sans-serif;
+    font-family: 'EB Garamond', serif;
+    font-family: 'Work Sans', sans-serif;
+}
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.loginPage {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.loginContainer {
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+    height: 70vh;
+    width: 30vw;
+    background-color: white;
+    /* display: flex; */
+    align-self: center;
+}
+
+.loginLogo {
+    width: 130px;
+    height: 130px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('./assets/login_logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.goalsLogo {
+    height: 75px;
+    width: 75px;
+    background-image: url('./assets/goals_logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* .imgS{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 45px;
+  width: 45px;
+} */
+
+.steps {
+    background-image: url('./assets/steps.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 45px;
+    width: 45px;
+}
+
+span.circle {
+    background: #e3e3e3;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    color: #6e6e6e;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 60px;
+    margin-right: 5px;
+    text-align: center;
+    width: 60px;
+}
+
+.bloodOxygen {
+    background-image: url('./assets/bloodOxygen.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 45px;
+    width: 45px;
+}
+
+.stress {
+    background-image: url('./assets/stress.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 45px;
+    width: 45px;
+}
+
+.heartRate {
+    background-image: url('./assets/heart_rate.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 45px;
+    width: 45px;
+}
+
+.sleep {
+    background-image: url('./assets/sleep.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 45px;
+    width: 45px;
+}
+
+.goalCard {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    width: 60vw;
+    height: 70px;
+    padding: 10px;
+}
+
+select {
+    outline: none;
+    box-shadow: none !important;
+    width: 225px;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0;
+    border-radius: 5px;
+}
+
+select:focus {
+    outline: none;
+}
+
+.progressCard {
+    width: 70vw
+}
+
+.bgImg{
+  position: absolute;
+  opacity: 0.7;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('./assets/background.png');
+  background-position: 0 10%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media only screen and (max-width: 768px) {
+    .loginContainer {
+        width: 90vw;
+    }
+    .goalCard {
+        width: 90vw
+    }
+    select {
+        width: 150px;
+    }
+    .progressCard {
+        width: 90vw
+    }
+    h6{
+      font-size: 0.75rem;
+    }
+    .bgImg{
+      background-position: 0 -50%;
+    }
+    h5{
+      font-size: 1rem;
+    }
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
 }

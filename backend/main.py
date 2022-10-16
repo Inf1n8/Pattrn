@@ -8,6 +8,7 @@ from apis.patient import PatientDetail, Patients
 from apis.goals import GoalDetail
 from apis.observations import Observations, ObservationStats
 from apis.graphDataGen import GraphGen
+from apis.allergyIntoleranceInfo import AllergyData
 from dotenv import load_dotenv
 import os
 
@@ -30,6 +31,9 @@ api.add_resource(GoalDetail, '/goal_detail/<id>')
 api.add_resource(Observations, '/insert_observations/<id>')
 api.add_resource(ObservationStats, '/observation_stats/<id>')
 api.add_resource(GraphGen, '/get_graph_data/<id>')
+api.add_resource(GraphGen, '/get_graph_data/<id>')
+api.add_resource(AllergyData,'/get_allergy_data/<id>')
+api.add_resource(AllergyData,'/put_allergy_data/<id>')
 
 
 

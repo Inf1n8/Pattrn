@@ -40,6 +40,7 @@ class GraphGen(Resource):
     def get(self, id):
         params = request.args.to_dict()
         fhir_id = get_fhir_id(id)
+        print(fhir_id)
         observations = get_observations(fhir_id)
         data_list = []
         data_list.extend(get_data_to_list(observations))

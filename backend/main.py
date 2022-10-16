@@ -6,8 +6,7 @@ from apis.hello import HelloWorld
 from apis.login import Login
 from apis.patient import PatientDetail, Patients
 from apis.goals import GoalDetail
-from apis.observations import Observations
-from apis.observation import ObservationStats
+from apis.observations import Observations, ObservationStats
 from dotenv import load_dotenv
 import os
 

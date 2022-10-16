@@ -16,7 +16,8 @@ class UserTable(db.Entity):
     fhir_id = Required(int)
 
 
-db.bind('postgres', pg_conn_string)
+db.bind(
+    'postgres', f'{pg_conn_string}&sslrootcert={os.getcwd()}/apis/root.crt')
 db.generate_mapping(create_tables=True)
 
 

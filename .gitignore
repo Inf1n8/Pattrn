@@ -5,3 +5,5 @@ backend/__pycache__/
 backend/apis/__pycache__/
 backend/apis/schema/__pycache__/
 backend/.env
+backend/apis/env.py
+backend/apis/root.crt

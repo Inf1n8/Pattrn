@@ -76,6 +76,20 @@ code {
   width: 45px;
 }
 
+span.circle {
+  background: #e3e3e3;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  color: #6e6e6e;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 60px;
+  margin-right: 5px;
+  text-align: center;
+  width: 60px;
+}
+
 .bloodOxygen{
   background-image: url('./assets/bloodOxygen.png');
   background-position: center;
@@ -135,6 +149,10 @@ select:focus {
   outline: none;
 }
 
+.progressCard{
+  width: 70vw
+}
+
 @media only screen and (max-width: 768px) {
     .loginContainer {
         width: 90vw;
@@ -146,5 +164,9 @@ select:focus {
 
   select {
     width: 150px;
+  }
+
+  .progressCard{
+    width: "90vw"
   }
 }

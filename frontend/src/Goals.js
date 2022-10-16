@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
+import axios from "axios";
+import { API_URL, GOALS_URL } from "./Config";
 
 const CardGoal = ({
   fieldName,
@@ -105,6 +107,26 @@ export default function Goals() {
     });
   };
 
+  const saveGoals = () => {
+    console.log(goalState);
+    let jsonData = JSON.stringify(goalState);
+    let userId = localStorage.getItem("userId");
+    axios
+      .post(`${API_URL}/${GOALS_URL}/${userId}`, jsonData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then(function (response) {
+        console.log(response.data);
+        // alert saved successfull
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        // alert error
+      });
+  };
+
   return (
     <div>
       <div className="container">
@@ -128,7 +150,9 @@ export default function Goals() {
           })}
         </div>
         <div className="mt-5 d-flex justify-content-center">
-          <Button variant="success">Save</Button>
+          <Button variant="success" onClick={saveGoals}>
+            Save
+          </Button>
         </div>
       </div>
     </div>

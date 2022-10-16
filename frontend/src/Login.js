@@ -34,6 +34,7 @@ export default function Login() {
       .then(function (response) {
         console.log(response.data);
         localStorage.setItem("isAuthenticated", "true");
+        localStorage.setItem("userId", response.data["id"]);
         window.location.pathname = "/";
       })
       .catch((err) => {

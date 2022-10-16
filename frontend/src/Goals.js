@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { API_URL, GOALS_URL } from "./Config";
+import Navbar from "./Navbar";
 
 const CardGoal = ({
   fieldName,
@@ -156,6 +157,8 @@ export default function Goals() {
 
   return (
     <div>
+      <Navbar />
+    <div>
       <ToastContainer />
       <div className="container">
         <div className="goalsHeaderContainer d-flex justify-content-center align-items-center mt-3">
@@ -183,6 +186,7 @@ export default function Goals() {
           </Button>
         </div>
       </div>
+    </div>
     </div>
   );
 }

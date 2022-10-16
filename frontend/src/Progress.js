@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
+import Navbar from "./Navbar";
 
 export default function Progress() {
   const [stats, setStats] = useState({
@@ -104,6 +105,9 @@ export default function Progress() {
 
   //   useEffect(() => {}, []);
   return (
+    <div>
+      <Navbar />
+    
     <div className="d-flex justify-content-center mt-3 mb-5">
       <div className="d-flex flex-column progressCard mx-2">
         <h2 style={{ textAlign: "center" }}>Deep Dive</h2>
@@ -147,6 +151,7 @@ export default function Progress() {
           );
         })}
       </div>
+    </div>
     </div>
   );
 }

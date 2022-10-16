@@ -125,14 +125,12 @@ export default function Goals() {
         toast.success("Saved Successfully !", {
           position: toast.POSITION.TOP_CENTER,
         });
-        // alert saved successfull
       })
       .catch((err) => {
         console.log(err.response.data);
         toast.error("Error Occurred !", {
           position: toast.POSITION.TOP_CENTER,
         });
-        // alert error
       });
   };
 
@@ -147,46 +145,44 @@ export default function Goals() {
       .then(function (response) {
         let res = JSON.parse(response.data);
         setGoalState(res);
-        // alert saved successfull
       })
       .catch((err) => {
         console.log(err.response.data);
-        // alert error
       });
   }, []);
 
   return (
     <div>
       <Navbar />
-    <div>
-      <ToastContainer />
-      <div className="container">
-        <div className="goalsHeaderContainer d-flex justify-content-center align-items-center mt-3">
-          <div className="goalsLogo"></div>
-          <h3>Health Goals</h3>
-        </div>
-        <div className="d-flex flex-column justify-content-center align-items-center">
-          {goalTypes.map((ele, ind) => {
-            return (
-              <CardGoal
-                key={ind}
-                fieldName={ele["fieldName"]}
-                name={ele["name"]}
-                values={ele["values"]}
-                unit={ele["unit"]}
-                selectedVal={goalState[ele["name"]]}
-                setUpdatedGoal={setUpdatedGoal}
-              />
-            );
-          })}
-        </div>
-        <div className="mt-5 d-flex justify-content-center">
-          <Button variant="success" onClick={saveGoals}>
-            Save
-          </Button>
+      <div>
+        <ToastContainer />
+        <div className="container">
+          <div className="goalsHeaderContainer d-flex justify-content-center align-items-center mt-3">
+            <div className="goalsLogo"></div>
+            <h3>Health Goals</h3>
+          </div>
+          <div className="d-flex flex-column justify-content-center align-items-center">
+            {goalTypes.map((ele, ind) => {
+              return (
+                <CardGoal
+                  key={ind}
+                  fieldName={ele["fieldName"]}
+                  name={ele["name"]}
+                  values={ele["values"]}
+                  unit={ele["unit"]}
+                  selectedVal={goalState[ele["name"]]}
+                  setUpdatedGoal={setUpdatedGoal}
+                />
+              );
+            })}
+          </div>
+          <div className="mt-5 d-flex justify-content-center">
+            <Button variant="success" onClick={saveGoals}>
+              Save
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }

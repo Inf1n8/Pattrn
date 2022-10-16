@@ -123,6 +123,7 @@ span.circle {
 }
 
 .goalCard {
+    background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     border-radius: 5px;
@@ -149,6 +150,17 @@ select:focus {
     width: 70vw
 }
 
+.bgImg{
+  position: absolute;
+  opacity: 0.7;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('./assets/background.png');
+  background-position: 0 10%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 @media only screen and (max-width: 768px) {
     .loginContainer {
         width: 90vw;
@@ -161,6 +173,12 @@ select:focus {
     }
     .progressCard {
         width: "90vw"
+    }
+    h6{
+      font-size: 0.75rem;
+    }
+    .bgImg{
+      background-position: 0 -50%;
     }
 }
 

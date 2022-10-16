@@ -9,6 +9,7 @@ import Login from "./Login";
 import Goals from "./Goals";
 import Progress from "./Progress";
 import Dashboard from "./Dashboard";
+import Trends from "./Trends";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,6 +19,7 @@ root.render(
         <Route exact path="/" element={<Dashboard />} />
         <Route exact path="/goals" element={<Goals />} />
         <Route exact path="/progress" element={<Progress />} />
+        <Route exact path="/trends" element={<Trends />} />
       </Route>
       <Route exact path="/login" element={<Login />} />
       <Route path="*" element={<PageNotFound />} />

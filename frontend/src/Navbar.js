@@ -20,6 +20,7 @@ function BasicExample() {
             <Nav.Link href="/">Dashboard</Nav.Link>
             <Nav.Link href="/goals">Goals</Nav.Link>
             <Nav.Link href="/progress">Progress</Nav.Link>
+            <Nav.Link href="/trends">Trends</Nav.Link>
           </Nav>
           <Button variant="danger" onClick={handleLogOut}>
             Log Out

@@ -5,7 +5,7 @@ from apis.task import Tasks
 from apis.hello import HelloWorld
 from apis.login import Login
 from apis.patient import PatientDetail, Patients
-from apis.goals import GoalDetail,Goals
+from apis.goals import GoalDetail
 from dotenv import load_dotenv
 import os
 
@@ -23,7 +23,7 @@ api.add_resource(Tasks, '/task/<int:id>')
 api.add_resource(Login, '/login')
 api.add_resource(Patients, '/patients')
 api.add_resource(PatientDetail, '/patient_detail/<id>')
-api.add_resource(Goals, '/goal_detail/<id>')
+# api.add_resource(Goals, '/goal_detail/<id>')
 api.add_resource(GoalDetail, '/goal_detail/<id>')
 
 

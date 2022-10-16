@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { API_URL, GOALS_URL } from "./Config";
@@ -112,23 +114,49 @@ export default function Goals() {
     let jsonData = JSON.stringify(goalState);
     let userId = localStorage.getItem("userId");
     axios
-      .post(`${API_URL}/${GOALS_URL}/${userId}`, jsonData, {
+      .post(`${API_URL}${GOALS_URL}/${userId}`, jsonData, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then(function (response) {
         console.log(response.data);
+        toast.success("Saved Successfully !", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        // alert saved successfull
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        toast.error("Error Occurred !", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        // alert error
+      });
+  };
+
+  useEffect(() => {
+    let userId = localStorage.getItem("userId");
+    axios
+      .get(`${API_URL}${GOALS_URL}/${userId}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then(function (response) {
+        let res = JSON.parse(response.data);
+        setGoalState(res);
         // alert saved successfull
       })
       .catch((err) => {
         console.log(err.response.data);
         // alert error
       });
-  };
+  }, []);
 
   return (
     <div>
+      <ToastContainer />
       <div className="container">
         <div className="goalsHeaderContainer d-flex justify-content-center align-items-center mt-3">
           <div className="goalsLogo"></div>

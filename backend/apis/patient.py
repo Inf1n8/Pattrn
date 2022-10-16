@@ -1,4 +1,3 @@
-from re import L
 import uuid
 from flask_restx import Resource
 from flask import request

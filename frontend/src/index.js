@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PageNotFound from "./PageNotFound";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "./Login";
+import Goals from "./Goals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,6 +15,7 @@ root.render(
     <Routes>
       <Route exact path="/" element={<ProtectedRoute />}>
         <Route exact path="/" element={<App />} />
+        <Route exact path="/goals" element={<Goals />} />
       </Route>
       <Route exact path="/login" element={<Login />} />
       <Route path="*" element={<PageNotFound />} />

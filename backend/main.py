@@ -7,6 +7,7 @@ from apis.login import Login
 from apis.patient import PatientDetail, Patients
 from apis.goals import GoalDetail
 from apis.observations import Observations
+from apis.observation import ObservationStats
 from dotenv import load_dotenv
 import os
 
@@ -27,6 +28,7 @@ api.add_resource(PatientDetail, '/patient_detail/<id>')
 # api.add_resource(Goals, '/goal_detail/<id>')
 api.add_resource(GoalDetail, '/goal_detail/<id>')
 api.add_resource(Observations, '/insert_observations/<id>')
+api.add_resource(ObservationStats, '/observation_stats/<id>')
 
 
 if __name__ == '__main__':

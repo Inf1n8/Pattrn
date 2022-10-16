@@ -16,7 +16,7 @@ class Patients(Resource):
             data = PatientSchema().load(data)
             fhir_id = insert_patient_data(data)
             id = post_login_data(data['email'], data['password'], fhir_id)
-            return {"message": "Successfully inserted", "id": str(id)}, HTTPStatus.ACCEPTED
+            return {"message": "Successfully inserted", "id": str(id), "fhir_id": str(fhir_id)}, HTTPStatus.ACCEPTED
         except ValidationError as err:
             return {'message': err.messages}, 400
         return {'message': 'OK'}  # Remove after integrating with DB

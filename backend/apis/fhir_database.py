@@ -149,3 +149,32 @@ def insert_patient_data(patient_dict):
     response = session.post(post_url, data=patient_json)
     fhir_id = response.headers['CONTENT-LOCATION'].split("/")[-3]
     return fhir_id
+
+def get_allergy_info(patientId):
+    session = get_FHIR_session()
+    patient_data_url = f"{BASE_URL}/Patient/{patientId}/AllergyIntolerance"
+    response = session.get(patient_data_url)
+    patient_response = response.json()
+    print(patient_response)
+    return patient_response
+    
+
+def put_allergy_info(patientId,data):
+    #### Pushing Smaple File
+    # Sample Json Body for Put Request
+    # {
+    #     "allergent":"shrimp",
+    #     "category":["food"],
+    #     "reaction":"Analphytic Reaction"
+    # }
+    #### can be modified when next version of UI is Made
+    dataDict=json.loads(open("../utils/AllergyBundleData_sample.json","r").read())
+    dataDict["code"]["coding"][0]["display"]=data["allergent"]
+    dataDict["category"]=data["category"]
+    dataDict["patient"]["reference"]="Patient/"+str(patientId)
+    dataDict["reaction"][0]["description"]=data["reaction"]
+    print(json.dumps(dataDict))
+    session = get_FHIR_session()
+    response = session.post(f"{BASE_URL}/AllergyIntolerance/", data=json.dumps(dataDict))
+    print(response)
+    # return response.json()

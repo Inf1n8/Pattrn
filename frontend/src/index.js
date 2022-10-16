@@ -7,6 +7,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PageNotFound from "./PageNotFound";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "./Login";
+import Dashboard from "./Dashboard";
+import Profile from "./Profile";
+import HealthInfo from "./HealthInfo";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,6 +17,9 @@ root.render(
     <Routes>
       <Route exact path="/" element={<ProtectedRoute />}>
         <Route exact path="/" element={<App />} />
+        <Route exact path="/dashboard" element={<Dashboard />} />
+        <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/healthinfo" element={<HealthInfo />} />
       </Route>
       <Route exact path="/login" element={<Login />} />
       <Route path="*" element={<PageNotFound />} />

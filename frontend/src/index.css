@@ -1,27 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.loginPage{
+.loginPage {
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
 }
 
-.loginContainer{
+.loginContainer {
     font-family: 'Roboto', sans-serif;
     letter-spacing: 1px;
     height: 70vh;
@@ -31,7 +27,7 @@ code {
     align-self: center;
 }
 
-.loginLogo{
+.loginLogo {
     width: 130px;
     height: 130px;
     position: relative;
@@ -43,8 +39,56 @@ code {
     background-size: cover;
 }
 
+.randomImg {
+    height: 200px;
+    background-image: url('./assets/dashboard_picture.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 @media only screen and (max-width: 768px) {
     .loginContainer {
+        width: 90vw;
+    }
+}
+
+.DashboardPage {
+    height: 92vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.DashboardCard {
+    font-family: 'Roboto', sans-serif;
+    /* letter-spacing: 1px; */
+    /* height: 80vh; */
+    /* width: 30vw; */
+    /* background-color: white; */
+    /* display: flex; */
+    align-self: center;
+}
+
+.ProfilePage {
+    height: 92vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.ProfileCard {
+    font-family: 'Roboto', sans-serif;
+    /* letter-spacing: 1px; */
+    /* height: 80vh; */
+    width: 30vw;
+    /* background-color: black; */
+    /* display: flex; */
+    align-self: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .ProfileCard {
         width: 90vw;
     }
 }

@@ -25,9 +25,15 @@ baseDict = {'resource': {'resourceType': 'Observation',
             'request': {'method': 'POST', 'url': 'Observation'}}
 
 
-def camel_case(s):
-    s = sub(r"(_|-)+", " ", s).title().replace(" ", "")
-    return ''.join([s[0].lower(), s[1:]])
+# def camel_case(s):
+#     s = sub(r"(_|-)+", " ", s).title().replace(" ", "")
+#     return ''.join([s[0].lower(), s[1:]])
+
+
+def format_category(cat_type: str) -> str:
+    mapping = {'Calories Burned': 'caloriesBurnt', 'HeartRate': 'heartRate',
+               'Sleep Duration': 'sleep', 'SpO2': 'bloodOxygen', 'Stress': 'stress', 'steps': 'steps'}
+    return mapping[cat_type]
 
 
 def get_data_to_list(observations):
@@ -68,17 +74,20 @@ class ObservationStats(Resource):
         stats_dict = {}
         df.drop(df[df['value_code'] == 'step'].index, inplace=True)
         for category, category_df in df.groupby('value_code'):
+            if category == 'StepsCount':
+                continue
             resampled_df = category_df.resample(params["window"])
             average = resampled_df.mean().iloc[-1]
             max_val = resampled_df.max().iloc[-1]
             min_val = resampled_df.min().iloc[-1]
             sum_val = resampled_df.sum().iloc[-1]
-            if category == "SpO2" or category == "Stress" or category == "Sleep Duration":
-                stats_dict[category] = {"value_code": camel_case(category), "average": np.round(average["value"], 1),
+            category = format_category(category)
+            if category == "bloodOxygen" or category == "stress" or category == "sleep":
+                stats_dict[category] = {"value_code": category, "average": np.round(average["value"], 1),
                                         "min": min_val["value"],
                                         "max": max_val["value"], "sum": sum_val["value"]}
             else:
-                stats_dict[category] = {"value_code": camel_case(category), "average": average["value"],
+                stats_dict[category] = {"value_code": category, "average": int(average["value"]),
                                         "min": min_val["value"],
                                         "max": max_val["value"], "sum": sum_val["value"]}
         return stats_dict

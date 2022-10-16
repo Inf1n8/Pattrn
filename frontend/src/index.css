@@ -172,13 +172,16 @@ select:focus {
         width: 150px;
     }
     .progressCard {
-        width: "90vw"
+        width: 90vw
     }
     h6{
       font-size: 0.75rem;
     }
     .bgImg{
       background-position: 0 -50%;
+    }
+    h5{
+      font-size: 1rem;
     }
 }
 

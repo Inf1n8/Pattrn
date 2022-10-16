@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "mdbreact": "^5.2.0",
+    "react-bootstrap-star-rating": "^3.5.5-alpha.0.3"
+  }
+}

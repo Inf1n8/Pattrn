@@ -92,3 +92,110 @@ code {
         width: 90vw;
     }
 }
+
+.goalsLogo {
+    height: 75px;
+    width: 75px;
+    background-image: url('./assets/goals_logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* .imgS{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 45px;
+  width: 45px;
+} */
+
+.steps {
+    background-image: url('./assets/steps.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 45px;
+    width: 45px;
+}
+
+.bloodOxygen {
+    background-image: url('./assets/bloodOxygen.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 45px;
+    width: 45px;
+}
+
+.stress {
+    background-image: url('./assets/stress.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 45px;
+    width: 45px;
+}
+
+.heartRate {
+    background-image: url('./assets/heart_rate.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 45px;
+    width: 45px;
+}
+
+.sleep {
+    background-image: url('./assets/sleep.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 45px;
+    width: 45px;
+}
+
+.goalCard {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    width: 60vw;
+    height: 70px;
+    padding: 10px;
+}
+
+select {
+    outline: none;
+    box-shadow: none !important;
+    width: 225px;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0;
+    border-radius: 5px;
+}
+
+select:focus {
+    outline: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .loginContainer {
+        width: 90vw;
+    }
+    .goalCard {
+        width: 90vw
+    }
+    select {
+        width: 150px;
+    }
+}
+
+.dashboardLogo {
+    height: 75px;
+    width: 75px;
+    background-image: url('./assets/login_logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

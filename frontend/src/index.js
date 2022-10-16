@@ -10,6 +10,7 @@ import Login from "./Login";
 import Dashboard from "./Dashboard";
 import Profile from "./Profile";
 import HealthInfo from "./HealthInfo";
+import Dashboard2 from "./Dashboard2";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,6 +19,7 @@ root.render(
       <Route exact path="/" element={<ProtectedRoute />}>
         <Route exact path="/" element={<App />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
+        <Route exact path="/dashboard2" element={<Dashboard2 />} />
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/healthinfo" element={<HealthInfo />} />
       </Route>
